@@ -1,0 +1,10 @@
+Z:\DatabaseDesign\TextFileReader\TextFileReader\bin\Debug\TextFileReader.exe.config
+Z:\DatabaseDesign\TextFileReader\TextFileReader\bin\Debug\TextFileReader.exe
+Z:\DatabaseDesign\TextFileReader\TextFileReader\bin\Debug\TextFileReader.pdb
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.csproj.AssemblyReference.cache
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.Form1.resources
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.Properties.Resources.resources
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.csproj.GenerateResource.cache
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.csproj.CoreCompileInputs.cache
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.exe
+Z:\DatabaseDesign\TextFileReader\TextFileReader\obj\Debug\TextFileReader.pdb
