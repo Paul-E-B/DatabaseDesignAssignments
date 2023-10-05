@@ -23,11 +23,10 @@ namespace CSV_Pipe_To_TabDelimited
         static string? fileName;
 
         /// <summary>
-        /// Import all data from desired file. This is currently geared toward txt
-        /// files.
+        /// Stream data from desired delimited file and output it as a formatted txt file
         /// </summary>
-        /// <param name="path"></param>This is the relative path of a file
-        /// <returns>A list of all data from the file</returns>
+        /// <param name="inputPaths"></param>This is the path to the folder the data is read-in from
+        /// <param name="outputPath"></param>This is the path to the folder that the txt files will be output to
         public static void StreamData(List<string> inputPaths, string outputPath)
         {
             ClearOutputDirectory(outputPath);
@@ -77,7 +76,11 @@ namespace CSV_Pipe_To_TabDelimited
         } 
 
 
-
+        /// <summary>
+        /// This filters a filed by its extension. If it has a valid extension, as defined in the MainWindow, the file
+        /// is valid and its extension is logged
+        /// </summary>
+        /// <param name="path"></param>this is the directory that the file will be written to.
         static void FilterFileByExtension(string path)
         {
             if (MainWindow.validFileExtensions.Any(ext => path.EndsWith(fileExtension = ext)))
@@ -93,7 +96,10 @@ namespace CSV_Pipe_To_TabDelimited
 
 
 
-
+        /// <summary>
+        /// Clear the directory that the parsed files will be exported to
+        /// </summary>
+        /// <param name="outputPath"></param>this is the directory that will be cleared
         static void ClearOutputDirectory(string outputPath)
         {
             var dir = Directory.GetFiles(outputPath);

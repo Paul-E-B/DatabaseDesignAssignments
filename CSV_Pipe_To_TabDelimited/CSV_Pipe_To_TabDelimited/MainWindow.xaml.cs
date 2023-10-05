@@ -17,22 +17,18 @@ namespace CSV_Pipe_To_TabDelimited
         public static Dictionary<string, char> extensions_And_Delimiter_To_Parse = new Dictionary<string, char>();
 
         //An array of the valid file extension
-        public static string[] validFileExtensions;
+        public static string[]? validFileExtensions;
 
         //This is the directory this program reads from
-        public static string inputDirectory;
+        public static string? inputDirectory;
 
         //This is the directory this program writes to
-        public static string outputDirectory;
+        public static string? outputDirectory;
 
         //a list of all files in the directory
         List<string> all_FilesInDirectory = new List<string>();
 
-        //A list of all files with a valid extension in the input directory
-        public static List<string> allValid_FilesInDirectory = new List<string>();
-
-
-
+       
         /// <summary>
         /// Called when the program loads.
         /// It initializes all important info to the program
@@ -55,14 +51,21 @@ namespace CSV_Pipe_To_TabDelimited
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Get a list of all paths to all files in the directory
-            all_FilesInDirectory = Directory.GetFiles(inputDirectory).ToList();
+            try
+            {
+                //Get a list of all paths to all files in the directory
+                all_FilesInDirectory = Directory.GetFiles(inputDirectory).ToList();
 
-            //Import the data and parse it
-            Importer.StreamData(all_FilesInDirectory,outputDirectory);
+                //Stream the data into a txt file held in the output directory
+                Importer.StreamData(all_FilesInDirectory, outputDirectory);
 
-            //Inform the user that their files have been processed in The Textbox
-            TheText.Text = "Files Processed";
+                //Inform the user that their files have been processed in The Textbox
+                TheText.Text = "Files Processed";
+            }
+            catch(Exception IO_error)
+            {
+                ErrorLog.LogError(IO_error.ToString(), "Button");
+            }
         }
 
 
