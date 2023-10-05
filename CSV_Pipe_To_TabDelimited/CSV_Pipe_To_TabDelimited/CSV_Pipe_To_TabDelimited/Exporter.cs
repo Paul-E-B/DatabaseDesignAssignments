@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 namespace CSV_Pipe_To_TabDelimited
 {
+    //a class for exporter related methods
     internal class Exporter
     {
         static string scriptName = typeof(Exporter).Name;
@@ -17,6 +18,11 @@ namespace CSV_Pipe_To_TabDelimited
         static List<string> errors = new List<string>();
 
 
+        /// <summary>
+        ///A method used for exporting a list of strings as a txt file to a desired directory
+        /// </summary>
+        /// <param name="parsedData"></param>The parsed data from a delimited file
+        /// <param name="directory"></param>The desired output directory for the txt file
         public static void Export(List<string> parsedData, string directory)
         {
 
@@ -46,7 +52,10 @@ namespace CSV_Pipe_To_TabDelimited
 
         }
 
-
+        /// <summary>
+        /// A method used to export the error log to a txt file
+        /// </summary>
+        /// <param name="directory"></param>The desired output directory
         public static void ExportErrorLog(string directory)
         {
             try

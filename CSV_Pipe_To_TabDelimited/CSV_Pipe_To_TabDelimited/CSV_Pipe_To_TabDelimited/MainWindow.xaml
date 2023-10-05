@@ -8,6 +8,6 @@
         Title="CSV &amp; Pipe -&gt; Tab Delimited" Height="222" Width="222">
     <Grid x:Name="TheGrid">
         <Button x:Name="TheButton" Content="Active" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" Click="Button_Click" RenderTransformOrigin="-1.136,0.553" Height="111" Width="111" BorderBrush="Black" FontSize="30" Background="Red" Foreground="White" BorderThickness="5,5,5,5"/>
-        <TextBox x:Name="TheText" HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" Text="Place files in &quot;resources&quot; folder..." VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="TheText" HorizontalAlignment="Center" Margin="0,166,0,0" TextWrapping="Wrap" Text="Place files in &quot;resources&quot; folder..." VerticalAlignment="Top" Width="202"/>
     </Grid>
 </Window>

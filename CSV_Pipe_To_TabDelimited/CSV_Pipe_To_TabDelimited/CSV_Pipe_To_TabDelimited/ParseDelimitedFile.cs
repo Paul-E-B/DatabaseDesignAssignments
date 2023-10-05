@@ -12,7 +12,7 @@ namespace CSV_Pipe_To_TabDelimited
     {
         static string scriptName = typeof(ParseDelimitedFile).Name;
 
-        static string? lineOfParsedData;
+        static string? currentLineInParsedData;
 
         static List<string> parsedData = new List<string>();
 
@@ -22,8 +22,12 @@ namespace CSV_Pipe_To_TabDelimited
 
         static int? increment;
 
-        static char[]? endOfLineTrim = { '=', '=', '>', ' ' };
-
+        /// <summary>
+        /// This method reads through data from an imported file
+        /// </summary>
+        /// <param name="incomingData"></param>Data of delimited for that needs to be parsed
+        /// <param name="delimiter"></param>The delimiter used to seperate portions of data
+        /// <returns>Parsed data of the correct format for export</returns>
         public static List<string> Parse(List<string> incomingData, char delimiter)
         {
             //continue to keep the file name as the first line in the data
@@ -34,19 +38,22 @@ namespace CSV_Pipe_To_TabDelimited
             {
                 currentLineInData = incomingData[i];
 
-                lineOfParsedData += "Line#" + i + " :";
+                currentLineInParsedData += "Line#" + i + " :";
 
                 if (currentLineInData.Contains(delimiter))
                 {
+                    //increment tracks which line of data is current being read
                     increment = 1;
 
+                    //read through each character in the data
                     for(int c = 0; c < currentLineInData.Length; c++)
                     {
                         try
                         {
+                            //if the current character is a delimiter, increment and log that section of data
                             if (currentLineInData[c] == delimiter)
                             {
-                                lineOfParsedData += "Field#" + increment + "=" + currentData + "==> ";
+                                currentLineInParsedData += "Field#" + increment + "=" + currentData + "==> ";
                                 currentData = "";
                                 increment++;
                                 c++;
@@ -60,12 +67,13 @@ namespace CSV_Pipe_To_TabDelimited
                         }
                     }
 
-                    lineOfParsedData += "Field#" + increment + "=" + currentData;
+                    //Because files don't end with a delimiter, this is called one last time to hold data from the final value
+                    currentLineInParsedData += "Field#" + increment + "=" + currentData;
 
 
-                    parsedData.Add(lineOfParsedData);
+                    parsedData.Add(currentLineInParsedData);
 
-                    lineOfParsedData = null;
+                    currentLineInParsedData = null;
                 }
                 else
                 {
